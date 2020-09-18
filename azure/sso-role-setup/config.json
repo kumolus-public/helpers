@@ -1,0 +1,10 @@
+{
+	"tenant": "<Primary domain>",
+	"clientID": "<client ID or Aplication ID>",
+	"clientSecret": "<client secret>",
+	"scope": "https://graph.microsoft.com/.default",
+	"endpoints": {
+		"oauth": "https://login.microsoftonline.com/%s/oauth2/v2.0/token",
+		"graph": "https://graph.microsoft.com/beta"
+	}
+}
