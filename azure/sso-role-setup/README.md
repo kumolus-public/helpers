@@ -37,4 +37,4 @@
    ]
   
 - copy the id from this value and replace it in `update-roles.sh` line number 14.
-- bash update-roles.sh  <id copied from previous step>  (for updating role in azure)
+- bash update-roles.sh  (id copied from previous step)  (for updating role in azure)
