@@ -8,4 +8,5 @@ TOKEN=$(cat authtoken)
 
 GRAPH_URL=$(jq -r .endpoints.graph config.json)
 
-curl -s $GRAPH_URL/$1 -H "Authorization: Bearer $TOKEN" | jq '.value[] | select(.appId=="<Enterprise application ID>")'
+appId="<Enterprise application Object ID>"
+curl -X GET -H "Authorization: Bearer $TOKEN" -H "Content-type: application/json" "https://graph.microsoft.com/v1.0/servicePrincipals/$appId" | jq .

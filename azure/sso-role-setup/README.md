@@ -17,15 +17,16 @@
 
 - Go to `Enterprise application` section in azure active directory blade, click on add new app.
 - Search kumolus in search bar and add `kumolus app`
-- Now click on that app and copy its application id.
-- Now add this appliction ID in `get-endpoints.sh` script.
+- Now click on that app and copy its `Object ID`.
+- Add this Object ID in `get-endpoints.sh` script.
 
 ## Run scripts
 - bash generate-token.sh  (for api token generation)
 - bash get-endpoint.sh servicePrincipals   (for getting sso app details)
 - here in response there must be a section named `appRoles` with a json value like
+  ```
   [
-  {
+   {
     "allowedMemberTypes": [ "User" ], 
     "description": "msiam_access", 
     "displayName": "msiam_access", 
@@ -35,6 +36,35 @@
     "value": null 
     }
    ]
-  
-- copy the id from this value and replace it in `update-roles.sh` line number 14.
-- Run `bash update-roles.sh  (id copied from previous step)`
+   ```
+- Now we have add new roles here. Below there is an example "appRoles" for `administrator role`.
+  ```
+  {
+    "appRoles": [
+        {
+            "allowedMemberTypes": [
+                "User"
+            ],
+            "description": "msiam_access",
+            "displayName": "msiam_access",
+            "id": "b9632174-c057-4f7e-951b-be3adc52bfe6",
+            "isEnabled": true,
+            "origin": "Application",
+            "value": null
+        },
+        {
+            "allowedMemberTypes": [
+                "User"
+            ],
+            "description": "Administrators Only",
+            "displayName": "Admin",
+            "id": "4f8f8640-f081-492d-97a0-caf24e9bc134",
+            "isEnabled": true,
+            "value": "Administrator"
+        }
+    ]
+}
+  ```
+- You can only add new roles after `msiam_access` for the patch operation. Also, you can add as many roles as your organization needs.
+- Now prepare your appRoles and set it in `update-roles.sh` line number 12.
+- Run `bash update-roles.sh <Object ID>`  (id copied from previous step)
