@@ -22,7 +22,7 @@
 
 ## Run scripts
 - bash generate-token.sh  (for api token generation)
-- bash get-endpoint.sh servicePrincipals   (for getting sso app details)
+- bash get-endpoint.sh (for getting sso app details)
 - here in response there must be a section named `appRoles` with a json value like
   ```
   [
