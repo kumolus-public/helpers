@@ -12,6 +12,8 @@
   1. `Directory.AccessAsUser.All`
   2. `Directory.Read.All`
   3. `Directory.ReadWrite.All`
+  4. `Application.ReadWrite.All`
+  5. `AppRoleAssignment.ReadWrite.All`
 
 ## SSO app setup
 
