@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  Cloudformation template to add normal write permission to existing read only role
+Parameters:
+  RoleName:
+    Description: Name of existing Role to add this Policy
+    Type: CommaDelimitedList
+    Default: Kumolus-CrossAcctRole
+
+Resources:
+  CostUsageS3WritePolicy:
+    Type: 'AWS::IAM::ManagedPolicy'
+    Properties:
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          -
+            Effect: Allow
+            Action:
+              - cur:PutReportDefinition
+              - cur:ModifyReportDefinition
+              - cur:DeleteReportDefinition
+              - s3:CreateBucket
+              - s3:DeleteBucket
+              - s3:DeleteBucketPolicy
+              - s3:PutBucketCORS
+              - s3:PutBucketLogging
+              - s3:PutBucketNotification
+              - s3:PutBucketVersioning
+              - s3:PutBucketTagging
+              - s3:PutBucketPolicy
+              - s3:PutBucketAcl
+              - s3:PutEncryptionConfiguration
+            Resource: '*'
+      Roles: !Ref RoleName
+Outputs:
+  KumolusRoleARN:
+    Description: Write policy ARN
+    Value: !Ref CostUsageS3WritePolicy
