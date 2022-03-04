@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-  Cloudformation template to add normal write permission to existing read only role
+  Cloudformation template to add billing write permission to existing read only role
 Parameters:
   RoleName:
     Description: Name of existing Role to add this Policy
