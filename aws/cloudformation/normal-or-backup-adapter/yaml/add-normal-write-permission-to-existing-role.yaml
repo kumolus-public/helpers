@@ -5,10 +5,10 @@ Parameters:
   RoleName:
     Description: Name of existing Role to add this Policy
     Type: CommaDelimitedList
-    Default: Kumolus-CrossAcctRole
+    Default: CSMP-CrossAcctRole
 
 Resources:
-  KumolusInventoryNormalWritePolicy:
+  CSMPInventoryNormalWritePolicy:
     Type: 'AWS::IAM::ManagedPolicy'
     Properties:
       PolicyDocument:
@@ -210,6 +210,6 @@ Resources:
             Resource: '*'
       Roles: !Ref RoleName
 Outputs:
-  KumolusRoleARN:
+  CSMPRoleARN:
     Description: Write policy ARN
-    Value: !Ref KumolusInventoryNormalWritePolicy
+    Value: !Ref CSMPInventoryNormalWritePolicy

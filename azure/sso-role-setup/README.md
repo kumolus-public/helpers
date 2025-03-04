@@ -18,7 +18,7 @@
 ## SSO app setup
 
 - Go to `Enterprise application` section in azure active directory blade, click on add new app.
-- Search kumolus in search bar and add `kumolus app`
+- Search CSMP in search bar and add `CSMP app`
 - Now click on that app and copy its `Object ID`.
 - Add this Object ID in `get-endpoints.sh` script.
 
